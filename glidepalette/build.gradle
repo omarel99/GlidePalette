@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion project.sdk
+    buildToolsVersion project.buildTools
+
+    defaultConfig {
+        minSdkVersion project.minSdk
+        targetSdkVersion project.sdk
+
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    compile 'com.android.support:palette-v7:' + project.supportVersion
+    compile 'com.android.support:support-v4:' + project.supportVersion
+    compile 'com.github.bumptech.glide:glide:' + project.glideVersion
+    annotationProcessor 'com.github.bumptech.glide:compiler:' + project.glideVersion
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'GlidePalette'
+    orgName = 'florent37'
+
+    publishedGroupId = 'com.github.florent37'
+    libraryName = 'GlidePalette'
+    artifact = 'glidepalette'
+
+    libraryDescription = ''
+
+    siteUrl = 'https://github.com/florent37/GlidePalette'
+    gitUrl = 'https://github.com/florent37/GlidePalette.git'
+
+    libraryVersion = rootProject.ext.libraryVersion
+
+    developerId = 'florent37'
+    developerName = 'florent37'
+    developerEmail = 'champigny.florent@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: rootProject.file('gradle/install-v1.gradle')
+apply from: rootProject.file('gradle/bintray-android-v1.gradle')
